@@ -13,9 +13,9 @@ import org.springframework.web.client.RestTemplate;
 public class ChatService {
     private RestTemplate restTemplate;
 
-    @Value("${chatgpt_api_endpoint")
+    @Value("${chatgpt.api.endpoint")
     private String CHATGPT_API_ENDPOINT;
-    @Value("${chatgpt_api_key}")
+    @Value("${chatgpt.api.key}")
     private String CHATGPT_API_KEY;
 
     public ResponseEntity<ChatGPTResponse> generateText(ChatGPTRequest chatGptRequest) {
