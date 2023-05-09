@@ -1,0 +1,77 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v1
+servers:
+  - url: http://192.168.1.127:8080
+    description: Generated server url
+paths:
+  /api/chat/generate-text:
+    post:
+      tags:
+        - chat-controller
+      summary: Talk to mister gpt
+      operationId: sendMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatGPTRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ChatGPTResponse'
+components:
+  schemas:
+    ChatGPTRequest:
+      type: object
+      properties:
+        messages:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatGPTRequestMessage'
+        model:
+          type: string
+          default: gpt-3.5-turbo
+        temperature:
+          default: 0.5
+          type: number
+          format: double
+        max_tokens:
+          default: 100
+          type: integer
+          format: int32
+    ChatGPTRequestMessage:
+      type: object
+      required:
+        - content
+      properties:
+        content:
+          type: string
+        role:
+          type: string
+          default: user
+    ChatGPTResponse:
+      type: object
+      properties:
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatGPTChoice'
+    ChatGPTChoice:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/ChatGPTResponseMessage'
+    ChatGPTResponseMessage:
+      type: object
+      properties:
+        content:
+          type: string
+
+
