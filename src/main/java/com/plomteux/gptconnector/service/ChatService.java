@@ -14,19 +14,19 @@ public class ChatService {
     private RestTemplate restTemplate;
 
     @Value("${chatgpt.api.endpoint}")
-    private String CHATGPT_API_ENDPOINT;
+    private final String CHATGPT_API_ENDPOINT;
     @Value("${chatgpt.api.key}")
-    private String CHATGPT_API_KEY;
+    private final String CHATGPT_API_KEY;
 
     public ResponseEntity<ChatGPTResponse> generateText(ChatGPTRequest chatGptRequest) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(this.CHATGPT_API_KEY);
+        headers.setBearerAuth(CHATGPT_API_KEY);
 
         HttpEntity<ChatGPTRequest> entity = new HttpEntity<>(chatGptRequest, headers);
 
         return restTemplate.exchange(
-                this.CHATGPT_API_ENDPOINT,
+                CHATGPT_API_ENDPOINT,
                 HttpMethod.POST,
                 entity,
                 ChatGPTResponse.class

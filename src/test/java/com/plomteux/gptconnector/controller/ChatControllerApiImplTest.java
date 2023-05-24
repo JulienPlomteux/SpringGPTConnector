@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-public class ChatControllerApiImplTest {
+class ChatControllerApiImplTest {
     @MockBean
     private ChatService chatService;
 
@@ -24,7 +24,7 @@ public class ChatControllerApiImplTest {
     private ChatControllerApiImpl chatControllerApi;
 
     @Test
-    public void sendMessage_returnsResponseFromChatService() {
+     void sendMessage_returnsResponseFromChatService() {
         // Arrange
         ChatGPTRequest request = new ChatGPTRequest();
         ChatGPTResponse expectedResponse = new ChatGPTResponse();

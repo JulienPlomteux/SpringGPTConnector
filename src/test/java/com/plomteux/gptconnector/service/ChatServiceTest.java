@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("test")
 @SpringBootTest
-public class ChatServiceTest {
+class ChatServiceTest {
     @Autowired
     private ChatService chatService;
     @MockBean
@@ -32,7 +32,7 @@ public class ChatServiceTest {
     private String API_ENDPOINT;
 
     @Test
-    public void generateText_returnsExpectedResponse() {
+    void generateText_returnsExpectedResponse() {
         // Arrange
         ChatGPTRequest request = new ChatGPTRequest();
         ChatGPTResponse expectedResponse = new ChatGPTResponse();
@@ -44,8 +44,7 @@ public class ChatServiceTest {
 
         HttpEntity<ChatGPTRequest> expectedEntityRequest = new HttpEntity<>(request, headers);
 
-        when(restTemplate.exchange(eq(API_ENDPOINT), eq(HttpMethod.POST),
-                eq(expectedEntityRequest), eq(ChatGPTResponse.class)))
+        when(restTemplate.exchange(API_ENDPOINT, HttpMethod.POST, expectedEntityRequest, ChatGPTResponse.class))
                 .thenReturn(expectedEntity);
 
         // Act
@@ -55,7 +54,7 @@ public class ChatServiceTest {
         assertEquals(expectedResponse, actualResponse.getBody());
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
 
-        verify(restTemplate, times(1)).exchange(eq(API_ENDPOINT), eq(HttpMethod.POST),
-                eq(expectedEntityRequest), eq(ChatGPTResponse.class));
+        verify(restTemplate, times(1)).exchange(API_ENDPOINT, HttpMethod.POST, expectedEntityRequest, ChatGPTResponse.class);
+
     }
 }

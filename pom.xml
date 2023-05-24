@@ -115,11 +115,8 @@
                             <modelPackage>com.plomteux.gptconnector.model</modelPackage>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <configOptions>
-<!--                                <delegatePattern>true</delegatePattern>-->
                                 <useTags>true</useTags>
                                 <interfaceOnly>true</interfaceOnly>
-<!--                                <hideGenerationTimestamp>true</hideGenerationTimestamp>-->
-<!--                                <generateSupportingFiles>false</generateSupportingFiles>-->
                             </configOptions>
                         </configuration>
                     </execution>

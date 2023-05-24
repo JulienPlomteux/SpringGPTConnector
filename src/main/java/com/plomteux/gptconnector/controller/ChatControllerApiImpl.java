@@ -15,6 +15,7 @@ public class ChatControllerApiImpl implements ChatControllerApi {
     private ChatService chatService;
     private static final Logger logger = LoggerFactory.getLogger(ChatControllerApiImpl.class);
 
+    @Override
     public ResponseEntity<ChatGPTResponse> sendMessage(ChatGPTRequest chatGPTRequest) {
         logger.debug("Received request: {}", chatGPTRequest);
         return chatService.generateText(chatGPTRequest);
