@@ -2,11 +2,8 @@ package com.plomteux.gptconnector.service;
 
 import com.plomteux.gptconnector.model.ChatGPTRequest;
 import com.plomteux.gptconnector.model.ChatGPTResponse;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
